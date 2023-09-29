@@ -7,6 +7,14 @@ Based on convention, not configuration.
 
 - With the new router not all files placed in a route folder are accessible (old router - all files were accessible via the url). Instead you get a 404 page now.
 
+### Special Files
+- `page.tsx` - for making component publically accessible
+- `layout.tsx` - defines common layout
+- `loading.tsx` - showing loading UI components
+- `route.tsx` - creating APIs
+- `not-found.tsx` - show custom errors
+- `error.tsx` - show general and custom error pages
+
 ### Creating a new route:
 
 - Create a folder in the `app/` folder, for example `users/`
