@@ -19,3 +19,9 @@ const res = await fetch("https://jsonplaceholder.typicode.com/users", {
 ```
 
 **NOTE: caching options are only for using fetch API. If you use Axios or another third party lib you will not get these builtin options**
+
+## Static vs. Dynamic Rendering (Server Side rendering types)
+
+- If NextJS sees a compnent that has static data (even if you use fetch as above with caching enabled), it will render it as static html at build time and not re-serve the component if the page is refreshed.
+  - if you were to set cache to 'no-store' in the fetch options, then
+- To see which pages are static/dynamic you can run `npm run build` and check the output. If there is a circle next to the page it is static, if a lambda icon is next to it, it is rendered dynamically

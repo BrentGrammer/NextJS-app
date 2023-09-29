@@ -57,3 +57,10 @@
 
 - configuration files for eslint, next, postcss, tailwind and typescript
 
+
+## Production Build
+- `npm run build`
+  - Note: symbols next to the output represent which pages are static and which are dynamically rendered
+  - circles represent static pages and lambda symbols mean it is a dynamically rendered page.
+- `npm start` - starts app in production
+
