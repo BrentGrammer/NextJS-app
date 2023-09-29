@@ -22,3 +22,15 @@ const AdminLayout = ({ children }: Props) => {
   );
 };
 ```
+
+### Global Styles Overwriting
+- In the global css file you have directives that you can overwrite (@base etc)
+- To overwrite parts of the base layer (for example to update the styling of all h1s in the app), you can use another directive:
+```css
+/* overwrites the base layer to style all h1 elements in the app */
+@layer base {
+  h1 {
+    @apply font-bold text-2xl mb-3;
+  }
+}
+```
