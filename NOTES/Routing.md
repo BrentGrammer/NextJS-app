@@ -105,3 +105,24 @@ const PhotoPage = ({ params: { id, photoId } }: Props) => {
     return <div>ProductPage {slug}</div>;
   };
   ```
+
+### Query String Parameters
+
+- use the builtin `searchParams` property in the component to access query params
+
+```javascript
+interface Props {
+  params: { slug: string[] }; //dynamic params with the [...slug] catch all route
+  searchParams: { sortOrder: string }; // ?sortOrder= query param value
+}
+const ProductPage = ({
+  params: { slug },
+  searchParams: { sortOrder },
+}: Props) => {
+  return (
+    <div>
+      ProductPage {slug} {sortOrder}
+    </div>
+  );
+};
+```

@@ -1,13 +1,18 @@
-import React from 'react'
+import React from "react";
 
 interface Props {
-    params: { slug: string[] } //dynamic params with the [...slug] catch all route
+  params: { slug: string[] }; //dynamic params with the [...slug] catch all route
+  searchParams: { sortOrder: string }; // ?sortOrder= query param value
 }
-
-const ProductPage = ({params: {slug}}: Props) => {
+const ProductPage = ({
+  params: { slug },
+  searchParams: { sortOrder },
+}: Props) => {
   return (
-    <div>ProductPage {slug}</div>
-  )
-}
+    <div>
+      ProductPage {slug} {sortOrder}
+    </div>
+  );
+};
 
-export default ProductPage
+export default ProductPage;
