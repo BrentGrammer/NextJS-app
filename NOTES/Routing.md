@@ -11,10 +11,11 @@ Based on convention, not configuration.
 
 - Create a folder in the `app/` folder, for example `users/`
 - Add a `page.tsx` file in the `app/users/` folder.
-
+  - **You need to name the component in the folder `page.tsx`**
   - This will render a component that shows when the user is at the location: `/users`
   - can use `rafce` shortcut with the ES7+ extension to quickly make a component
 
 ### Nested Routes
 
--
+- Add a subfolder to a route folder
+- create another `page.tsx` in the subfolder and export a component that renders when the user is at that location: `routefolder/subfolder` ex: `users/new`
