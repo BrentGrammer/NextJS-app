@@ -19,3 +19,19 @@ Based on convention, not configuration.
 
 - Add a subfolder to a route folder
 - create another `page.tsx` in the subfolder and export a component that renders when the user is at that location: `routefolder/subfolder` ex: `users/new`
+
+## Navigation
+
+**Do not use <a> tags for navigating - this reloads a lot of assets**
+
+### Client Side navigation using Link
+
+- the Link component comes with NextJS from the next/link lib
+
+```javascript
+import Link from "next/link";
+
+<Link href="/users">My Link</Link>;
+```
+
+- Clicking on a Link will only have requests for downloading the content of the page, not all repetitive parts of the app/assets again.
