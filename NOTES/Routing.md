@@ -85,3 +85,23 @@ const PhotoPage = ({ params: { id, photoId } }: Props) => {
   );
 };
 ```
+
+### Catch all routing
+
+- add three dots before the param name to have catch a dynamic number of parameters
+- `[products/[...slug]]`
+- for a route `/products/grocery/dairy/eggs` you can extract from `params.slug`: ['grocery','dairy','eggs']
+- **NOTE** using `[...params]` requires at least one parameter present in the url or you get a 404.
+- to make the params optional use double brackets: `[[...param]]`
+
+  - with this change you can navigate to `/products` without a param and not get the 404
+
+  ```javascript
+  interface Props {
+    params: { slug: string[] }; //dynamic params with the [...slug] catch all route
+  }
+
+  const ProductPage = ({ params: { slug } }: Props) => {
+    return <div>ProductPage {slug}</div>;
+  };
+  ```
