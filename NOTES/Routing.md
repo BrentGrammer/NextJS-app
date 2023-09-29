@@ -109,6 +109,8 @@ const PhotoPage = ({ params: { id, photoId } }: Props) => {
 ### Query String Parameters
 
 - use the builtin `searchParams` property in the component to access query params
+- **You cannot access query params in components, only pages (page.tsx)**
+  - When you need to access them in components they need to be passed down as props from the parent page.tsx component.
 
 ```javascript
 interface Props {
@@ -123,6 +125,51 @@ const ProductPage = ({
     <div>
       ProductPage {slug} {sortOrder}
     </div>
+  );
+};
+```
+
+#### Use query string params for sorting and filtering
+
+- Since we have server rendered components no need for state and event handling - just use query params (`?sortOrder=name`)
+- If sorting in a component (not a page.tsx) then you need to pass the query params to it
+
+```javascript
+// In the parent page.tsx component using the table access the query string params and pass down
+const UsersPage = async ({ searchParams: { sortOrder } }: Props) => {
+  return (
+    <>
+      <h1>Users</h1>
+      <UserTable sortOrder={sortOrder} />
+    </>
+  );
+};
+
+// using link in `users/UsersTable.tsx` component, use links to set the query string params (extracted by parent page.tsx and passed down)
+const UserTable = async ({ sortOrder }: Props) => {
+  //...fetch users
+  const sortedUsers = sort(users).asc(
+    sortOrder === "email" ? (user) => user.email : (user) => user.name
+  );
+
+  return (
+    <table>
+      <th>
+        <Link href="/users?sortOrder=name">Name</Link>
+      </th>
+      <th>
+        <Link href="/users?sortOrder=email">Email</Link>
+      </th>
+
+      <tbody>
+        {sortedUsers.map((user) => (
+          <tr key={user.id}>
+            <td>{user.name}</td>
+            <td>{user.email}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 };
 ```
