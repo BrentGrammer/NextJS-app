@@ -55,6 +55,12 @@
   - the children in this component are replaced dynamically at runtime based on user's location
 - `page.tsx` represents the home page.
 - `globals.css` has app wide styles
+  - only place truly global styles in here
+  - For component specific styles use CSS Modules
+    - files must have `.module.css` extension
+    - when importing the styles module into a component it is an object you can access the classes on.
+    - You cannot use hyphens etc. in classnames with css modules. always use camel case.
+    - when generating css, NextJS uses postcss with plugins to generate the css so classnames do not clash.
 
 ### The Public Folder
 
