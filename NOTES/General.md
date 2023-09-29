@@ -61,6 +61,7 @@
     - when importing the styles module into a component it is an object you can access the classes on.
     - You cannot use hyphens etc. in classnames with css modules. always use camel case.
     - when generating css, NextJS uses postcss with plugins to generate the css so classnames do not clash.
+  - DaisyUI is a handy package for quick styling of components - bundled button classes etc. uses tailwind under the hood and can be used as a plugin in the tailwind config file.
 
 ### The Public Folder
 
