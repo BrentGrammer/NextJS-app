@@ -45,4 +45,11 @@
   - the children in this component are replaced dynamically at runtime based on user's location
 - `page.tsx` represents the home page.
 - `globals.css` has app wide styles
--
+
+#### The Public Folder
+
+- `public/` is where you put static assets like images svgs etc.
+
+#### Root folder
+
+- configuration files for eslint, next, postcss, tailwind and typescript
