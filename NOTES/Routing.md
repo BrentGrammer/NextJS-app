@@ -8,6 +8,7 @@ Based on convention, not configuration.
 - With the new router not all files placed in a route folder are accessible (old router - all files were accessible via the url). Instead you get a 404 page now.
 
 ### Special Files
+
 - `page.tsx` - for making component publically accessible
 - `layout.tsx` - defines common layout
 - `loading.tsx` - showing loading UI components
@@ -44,3 +45,21 @@ import Link from "next/link";
 ```
 
 - Clicking on a Link will only have requests for downloading the content of the page, not all repetitive parts of the app/assets again.
+
+### Dynamic Routing
+
+- use square brackets in a nested folder to create a route parameter
+  - `[id]/` under `users/` would make a route parameter for users/:id
+  - make the usual `page.tsx` file to export the component in the folder (`users/[id]`)
+- The route parameter will be available in the component as a prop under the `params` property:
+
+```typescript
+// users/[id]/page.tsx
+interface Props {
+  params: { id: number };
+}
+
+const UserDetailPage = ({ params: { id } }: Props) => {
+  return <div>UserDetailPage {id}</div>;
+};
+```
