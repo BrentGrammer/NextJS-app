@@ -35,9 +35,16 @@
 
 - CD into the project folder created by npx create-next-app and run: `npm run dev`
 
-### Project Structure
+### Production Build
 
-#### App Folder
+- `npm run build`
+  - Note: symbols next to the output represent which pages are static and which are dynamically rendered
+  - circles represent static pages and lambda symbols mean it is a dynamically rendered page.
+- `npm start` - starts app in production
+
+## Project Structure
+
+### App Folder
 
 - The `app/` folder is the container for the routing system.
   - note all components in the app folder are server components by default
@@ -49,18 +56,10 @@
 - `page.tsx` represents the home page.
 - `globals.css` has app wide styles
 
-#### The Public Folder
+### The Public Folder
 
 - `public/` is where you put static assets like images svgs etc.
 
-#### Root folder
+### Root folder
 
 - configuration files for eslint, next, postcss, tailwind and typescript
-
-
-## Production Build
-- `npm run build`
-  - Note: symbols next to the output represent which pages are static and which are dynamically rendered
-  - circles represent static pages and lambda symbols mean it is a dynamically rendered page.
-- `npm start` - starts app in production
-
