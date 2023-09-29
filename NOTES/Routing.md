@@ -53,7 +53,7 @@ import Link from "next/link";
   - make the usual `page.tsx` file to export the component in the folder (`users/[id]`)
 - The route parameter will be available in the component as a prop under the `params` property:
 
-```typescript
+```javascript
 // users/[id]/page.tsx
 interface Props {
   params: { id: number };
@@ -61,5 +61,27 @@ interface Props {
 
 const UserDetailPage = ({ params: { id } }: Props) => {
   return <div>UserDetailPage {id}</div>;
+};
+```
+
+#### Double Nested Routes (dynamic params)
+
+- If you need deeper nested dynamic routing, add another folder under the dynamic route folder with the same convention, but use a different parameter name
+- All of the parameters in the heirarchy for the nested routes will be in the params property
+
+```javascript
+// users/[id]/photos/[photoId]/page.tsx
+// this component renders for the route: /users/:id/photos/:id
+interface Props {
+  params: { id: number, photoId: number };
+}
+// note that we have both id and photoId (even though id is the dynamic param in the parent folder)
+const PhotoPage = ({ params: { id, photoId } }: Props) => {
+  return (
+    <div>
+      Photo Page
+      {id} {photoId}
+    </div>
+  );
 };
 ```
