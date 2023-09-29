@@ -40,6 +40,9 @@
 #### App Folder
 
 - The `app/` folder is the container for the routing system.
+  - note all components in the app folder are server components by default
+  - **NOTE**: a component is not publicly accessible via routing unless there is a `page.tsx` file in the folder!
+    - This allows you to co-locate components with folders that are related and still keep them under the app folder.
 - NextJS Router is based on the folder file structure
 - `layout.tsx` file represents common layout for pages.
   - the children in this component are replaced dynamically at runtime based on user's location
@@ -53,3 +56,4 @@
 #### Root folder
 
 - configuration files for eslint, next, postcss, tailwind and typescript
+

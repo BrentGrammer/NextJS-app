@@ -14,6 +14,7 @@ Based on convention, not configuration.
   - **You need to name the component in the folder `page.tsx`**
   - This will render a component that shows when the user is at the location: `/users`
   - can use `rafce` shortcut with the ES7+ extension to quickly make a component
+- **NOTE**: a component is not publicly accessible via routing unless there is a `page.tsx` file in the folder!
 
 ### Nested Routes
 
