@@ -1,8 +1,8 @@
-# NextJS Course Part 1 Mosh
+# NextJS Course Part 1
 
 - Github with starter project (finished): https://github.com/mosh-hamedani/next-course
 
-- Forun for questions:https://forum.codewithmosh.com/
+- Forum for questions:https://forum.codewithmosh.com/
 
 ## NextJS overview
 
