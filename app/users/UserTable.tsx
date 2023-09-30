@@ -14,7 +14,7 @@ interface Props {
 
 const UserTable = async ({ sortOrder }: Props) => {
   // because we are in a server component, we can use fetch here
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  const res = await fetch("https://jsonplaceholder.typicode.com/xusers");
   const users: User[] = await res.json();
 
   const sortedUsers = sort(users).asc(
@@ -34,7 +34,7 @@ const UserTable = async ({ sortOrder }: Props) => {
         </tr>
       </thead>
       <tbody>
-        {sortedUsers.map((user) => (
+        {sortedUsers?.map((user) => (
           <tr key={user.id}>
             <td>{user.name}</td>
             <td>{user.email}</td>
