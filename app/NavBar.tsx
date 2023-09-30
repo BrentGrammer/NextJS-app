@@ -17,7 +17,10 @@ const NavBar = () => {
       <Link href="/users">Users</Link>
       {status === "loading" && <Loading />}
       {/* Next-auth generates the page for auth/signin automatically */}
-      {status === "authenticated" && <div>{session.user!.name}</div>}
+      {status === "authenticated" && <div>{session.user!.name}
+      {/* auth/signout is automatically handled by next-auth */}
+      <Link href="/api/auth/signout" className="ml-3">Sign out</Link>
+      </div>}
       {status === "unauthenticated" && (
         <Link href="/api/auth/signin">Log in</Link>
       )}
