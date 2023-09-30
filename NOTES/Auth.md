@@ -126,3 +126,18 @@ export const config = {
 // + one or more
 // ? 0 or one
 ```
+
+- if using next-auth then you just use the built in middleware to check the session and redirect to login:
+
+```javascript
+// /middleware.ts
+
+// next-auth provides middleware to check session and redirect to login
+import middleware from "next-auth/middleware";
+
+export default middleware;
+
+export const config = {
+  matcher: ["/dashboard/:path*"],
+};
+```
