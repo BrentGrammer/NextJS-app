@@ -38,6 +38,16 @@ Based on convention, not configuration.
 
 - the Link component comes with NextJS from the next/link lib
 
+#### Link Prefetches the content to the viewport
+
+- to see this you can build the app in production: `npm run build; npm start;`
+- Link will prefetch pages with the <Link> (including for each possible value of href if it parses multiple query params - see [video](https://members.codewithmosh.com/courses/mastering-next-js-13-with-typescript/lectures/49120320) at 2:30 for explanation)
+
+#### As you navigate NextJS stores the payload of the pages in a client side cache
+
+- When you go to a previously visited page, it is retrieved from the cache not the network.
+  - Note: If you do a full page reload then the client cache is cleared.
+
 ```javascript
 import Link from "next/link";
 
@@ -170,6 +180,27 @@ const UserTable = async ({ sortOrder }: Props) => {
         ))}
       </tbody>
     </table>
+  );
+};
+```
+
+### Programmatic Navigation
+
+- use the `useRouter()` hook from `next/navigation` - DO NOT use the `next/router` import as that is the old router and will not work.
+  - `router.push('/my-route')`
+- You need to use 'use client' directive if handling in an event handler (server components cannot handle browser events)
+
+```javascript
+"use client";
+import { useRouter } from "next/navigation";
+import React from "react";
+
+const NestedNewRoute = () => {
+  const router = useRouter();
+  return (
+    <button className="btn btn-primary" onClick={() => router.push("/users")}>
+      Create
+    </button>
   );
 };
 ```

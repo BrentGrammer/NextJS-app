@@ -1,9 +1,14 @@
-import React from 'react'
+"use client";
+import { useRouter } from "next/navigation";
+import React from "react";
 
 const NestedNewRoute = () => {
+  const router = useRouter();
   return (
-    <div>NestedUsersPage</div>
-  )
-}
+    <button className="btn btn-primary" onClick={() => router.push("/users")}>
+      Create
+    </button>
+  );
+};
 
-export default NestedNewRoute
+export default NestedNewRoute;
