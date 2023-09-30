@@ -42,3 +42,19 @@ model User {
 - Whenever you make a change to the model or schema you need to run a migration and name it something meaningful
 
 - Now you can setup a connection with your Db GUI (Data Grip, DBeaver etc.)
+
+### Create prisma client
+- Create a new folder inside prisma folder called client.ts
+```javascript
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+
+export default prisma;
+// we have access to models defined in the schema: prisma.user.findMany .create etc.
+// anytime you run a migration prisma automatically generates a new prisma client so it is always in sync with the models
+```
+- make sure you only have one instance of prisma in your app. putting it in prisma/client.ts and exporting the instance will ensure that the first time it is imported it will be created and after that the instance is cached and reused.
+- In development because of fast refresh you can get an error for too many prisma clients.
+  - [need to use best practices for instantiating the client](https://www.prisma.io/docs/guides/other/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices)
+  - checks if prisma is present in the global space for re-use instead of creating a new client
