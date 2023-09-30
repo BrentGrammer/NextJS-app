@@ -74,3 +74,23 @@ return (
   </div>
 );
 ```
+
+#### Accessing session on server
+
+- Use the `getServerSession` function from next-auth package
+- you need to pass it the auth options you used for instantiating NextAuth, so make sure to export it as a const.
+
+```javascript
+// accessing session in a server component
+export default async function Home() {
+  const session = await getServerSession(authOptions);
+  return (
+    <main>
+      <h1>Hello {session && <span>{session.user!.name}</span>}</h1>
+      <Link href="/users">Users</Link>
+      <ProductCard />
+    </main>
+  );
+}
+
+```
