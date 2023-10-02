@@ -16,6 +16,4 @@ export function GET(request: NextRequest, { params }: Props) {
 }
 
 //...export async function POST(request) {}
-
-
 ```

@@ -141,3 +141,52 @@ export const config = {
   matcher: ["/dashboard/:path*"],
 };
 ```
+
+## Adapters
+
+- Can use NextAuth.js adapters to automatically store data in db on requests (for example the prisma adapter)
+- dependencies: `@next-auth/prisma-adapter` (requires @prisma/client and using prisma, also requires installing `prisma` as a dev dependency)
+  - note: at time of writing, nextauth is becoming auth.js and the dependency could change to @auth/prisma-adapter
+- Specify an adapter as part of initializing NextAuth
+
+```javascript
+// in api/auth/[...nextauth]/route.ts
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import prisma from "@/prisma/client"; // instance of prisma client created
+
+export const authOptions = {
+  adapter: PrismaAdapter(prisma),
+  providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
+  ],
+};
+```
+
+- Copy models from doc into the schema starting with the model Account.
+- run another migration: `npx prisma migrate dev`
+- AFter trying to sign in with google you will probably get an error on the callback because adapters use database session strategy by default (we need JWT token strategy). Database strategy cannot be used with OAuth currently, so you need to change to JWT session strategy
+```javascript
+// api/auth/[...nextauth]/route.ts
+import { AuthOptions } from "next-auth";
+
+export const authOptions: AuthOptions = {
+  adapter: PrismaAdapter(prisma),
+  providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
+  ],
+  session: {
+    strategy: 'jwt'
+  }
+};
+```
+- This saves provider and token data in the Account table automatically in the database (you usually don't touch these tables.)
+
+### Login with User and Password with CredntialsProvider
+- Use NextAuth's [Credential Provider](https://next-auth.js.org/providers/credentials)
+- 

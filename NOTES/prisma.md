@@ -58,3 +58,5 @@ export default prisma;
 - In development because of fast refresh you can get an error for too many prisma clients.
   - [need to use best practices for instantiating the client](https://www.prisma.io/docs/guides/other/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices)
   - checks if prisma is present in the global space for re-use instead of creating a new client
+
+  
