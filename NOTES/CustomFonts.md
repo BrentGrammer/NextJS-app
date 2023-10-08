@@ -54,5 +54,27 @@ export default function RootLayout({
 ```
 
 #### Using Tailwind
+
 - set a variable property for the custom css property name on the local font instantiation
+
+```javascript
+const poppinsFont = localFont({
+  src: "../public/fonts/poppins-regular-webfont.woff2",
+  variable: "--font-poppins", // sets a custom css property which you can reference in Tailwind config.
+});
+```
+
 - Go to the Tailwind config (tailwind.config.ts)
+
+```javascript
+ theme: {
+    extend: {
+      fontFamily: {
+        poppins: "var(--font-poppins)", // matches variable value you set when instantiating the local font in the component
+      },
+    },
+  },
+```
+
+- You can now use the font as a tailwind class like:
+  `<p className="font-poppins">text</p>`
