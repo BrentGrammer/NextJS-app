@@ -59,3 +59,37 @@ const nextConfig = {
   },
 };
 ```
+
+## Adding Third Party Scripts
+
+- i.e. google analytics for example
+- If script is needed on all pages, then add it to the root layout, otherwise add it to the pages that need it.
+- use `<Script>` component from the `next/script` package provided by Nest.js
+  - Has strategy prop:
+    - `beforeInteractive` - script is loaded before NextJS injects any client side code (hydration). Use only for critical scripts like bot detectors or cookie consent managers.
+    - `afterInteractive` - script is loaded after page is hydrated. Used for things like tag managers and analytics scripts.
+    - `lazyOnload` - script is loaded after all resources on page have been fetched. useful for things like background scripts or low priority things like chat plugins or social media widgets.
+    - `worker`
+- It can be cleaner to take scripts and put them into a separate component to prevent cluttering up the component you call them in.
+
+```javascript
+const GoogleAnalyticsScript = () => {
+  return (
+    <>
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=youranalyticsid"
+      />
+      <Script id="googleanalyticsscript" strategy="afterInteractive">
+        {/* if you get errors about unknown globals, then you can wrap the script in backticks and brackets - this is passing a script as a string which will be parsed as JS code*/}
+        {`window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-E720JHXSJ1')`}
+      </Script>
+    </>
+  );
+};
+```

@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import NavBar from "./NavBar";
 import { Suspense } from "react";
 import AuthProvider from "./auth/Provider";
+import Script from "next/script";
+import GoogleAnalyticsScript from "./GoogleAnalyticsScript";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="winter">
+      <GoogleAnalyticsScript />
       <body className={inter.className}>
         <AuthProvider>
           <NavBar />
