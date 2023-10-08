@@ -11,7 +11,7 @@ export default async function Home() {
 
   return (
     <main className="relative h-screen">
-      <h1>Hello {session && <span>{session.user!.name}</span>}</h1>
+      <h1 className="font-poppins">Hello {session && <span>{session.user!.name}</span>}</h1>
       <Link href="/users">Users</Link>
       <ProductCard />
       <Image src={myImage} alt="my image" />

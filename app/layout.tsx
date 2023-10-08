@@ -1,13 +1,24 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Roboto } from "next/font/google";
+import localFont from "next/font/local";
 import NavBar from "./NavBar";
 import { Suspense } from "react";
 import AuthProvider from "./auth/Provider";
-import Script from "next/script";
 import GoogleAnalyticsScript from "./GoogleAnalyticsScript";
 
 const inter = Inter({ subsets: ["latin"] });
+
+// create object for using a custom font
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"], // not needed if using a variable font (like open sans), variable fonts use a single file to represent a wide range of font styles
+});
+
+const poppinsFont = localFont({
+  src: "../public/fonts/poppins-regular-webfont.woff2",
+  variable: "--font-poppins", // sets a custom css property which you can reference in Tailwind config.
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="winter">
       <GoogleAnalyticsScript />
-      <body className={inter.className}>
+      <body className={poppinsFont.variable}>
         <AuthProvider>
           <NavBar />
           <main className="p-5">
