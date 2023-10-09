@@ -3,6 +3,7 @@
 - Github with starter project (finished): https://github.com/mosh-hamedani/next-course
 
 - Forum for questions:https://forum.codewithmosh.com/
+- Good youtube series: https://www.youtube.com/watch?v=E1HzFvXgrCs
 
 ## NextJS overview
 
