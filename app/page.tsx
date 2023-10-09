@@ -5,6 +5,7 @@ import { authOptions } from "./api/auth/[...nextauth]/route";
 import Image from "next/image";
 // import images as an object
 import myImage from "@/public/images/pic.jpg";
+import { Metadata } from "next";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -30,4 +31,8 @@ export default async function Home() {
       </div>
     </main>
   );
+}
+
+export const metadata: Metadata = {
+  title: "page specific title",
 }
