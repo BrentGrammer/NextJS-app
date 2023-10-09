@@ -1,5 +1,25 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Table of Contents
+
+- [General Notes](NOTES/General.md)
+- [Auth](NOTES/Auth.md)
+- [API](NOTES/Backend-API.md)
+- [Caching](NOTES/Caching.md)
+- [CustomFonts](NOTES/CustomFonts.md)
+- [Emails](NOTES/Emails.md)
+- [Error Handling](NOTES/Errors.md)
+- [Fetching Data](NOTES/FetchingData.md)
+- [Layout](NOTES/Layouts.md)
+- [Lazy Loading](NOTES/LazyLoading.md)
+- [Loading UIs](NOTES/LoadingUI.md)
+- [Optimizations - Images](NOTES/Optimizations.md)
+- [Prisma](NOTES/prisma.md)
+- [Routing](NOTES/Routing.md)
+- [SEO](NOTES/SEO.md)
+- [VS Code Snippets](NOTES/snippets.md)
+- [SSR vs. Client Rendered Components](NOTES/SSRvsClientComponents.md)
+
 ## Getting Started
 
 First, run the development server:
