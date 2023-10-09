@@ -51,7 +51,7 @@ export default async function UserPage({ params: { userId } }: Params) {
 
 ### Using Suspense
 
-- another best practice is to load data with suspense
+- another pattern is to load data with suspense
 - you can show data incrementally while fetching it in parallel
 - In this example we immediately show the user data while the posts continue fetching and will show when done.
   - We wrap the posts in a Suspense while they are fetching
